@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NimasEntitiesStoreContainer" CdmEntityContainer="TestDB1Entities2">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="NimasEntities.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="NimasEntities.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="NimasEntities.AspNetUserClaim">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="NimasEntities.AspNetUserLogin">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="NimasEntities.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cdrcmrfiles">
+      <EntityTypeMapping TypeName="NimasEntities.cdrcmrfile">
+        <MappingFragment StoreEntitySet="cdrcmrfiles">
+          <ScalarProperty Name="filedate" ColumnName="filedate" />
+          <ScalarProperty Name="filename" ColumnName="filename" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CdrDatas">
+      <EntityTypeMapping TypeName="NimasEntities.CdrData">
+        <MappingFragment StoreEntitySet="CdrData">
+          <ScalarProperty Name="lastRedirectingPartyPattern" ColumnName="lastRedirectingPartyPattern" />
+          <ScalarProperty Name="destIpv4v6Addr" ColumnName="destIpv4v6Addr" />
+          <ScalarProperty Name="origIpv4v6Addr" ColumnName="origIpv4v6Addr" />
+          <ScalarProperty Name="authorizationCodeValue" ColumnName="authorizationCodeValue" />
+          <ScalarProperty Name="authCodeDescription" ColumnName="authCodeDescription" />
+          <ScalarProperty Name="destCallTerminationOnBehalfOf" ColumnName="destCallTerminationOnBehalfOf" />
+          <ScalarProperty Name="origCallTerminationOnBehalfOf" ColumnName="origCallTerminationOnBehalfOf" />
+          <ScalarProperty Name="destDeviceName" ColumnName="destDeviceName" />
+          <ScalarProperty Name="origDeviceName" ColumnName="origDeviceName" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
+          <ScalarProperty Name="lastRedirectDnPartition" ColumnName="lastRedirectDnPartition" />
+          <ScalarProperty Name="lastRedirectDn" ColumnName="lastRedirectDn" />
+          <ScalarProperty Name="dateTimeDisconnect" ColumnName="dateTimeDisconnect" />
+          <ScalarProperty Name="dateTimeConnect" ColumnName="dateTimeConnect" />
+          <ScalarProperty Name="destMediaTransportAddress_IP" ColumnName="destMediaTransportAddress_IP" />
+          <ScalarProperty Name="destCause_value" ColumnName="destCause_value" />
+          <ScalarProperty Name="finalCalledPartyUnicodeLoginUserID" ColumnName="finalCalledPartyUnicodeLoginUserID" />
+          <ScalarProperty Name="finalCalledPartyNumber" ColumnName="finalCalledPartyNumber" />
+          <ScalarProperty Name="origMediaTransportAddress_IP" ColumnName="origMediaTransportAddress_IP" />
+          <ScalarProperty Name="origCause_value" ColumnName="origCause_value" />
+          <ScalarProperty Name="callingPartyUnicodeLoginUserID" ColumnName="callingPartyUnicodeLoginUserID" />
+          <ScalarProperty Name="callingPartyNumber" ColumnName="callingPartyNumber" />
+          <ScalarProperty Name="origNodeId" ColumnName="origNodeId" />
+          <ScalarProperty Name="dateTimeOrigination" ColumnName="dateTimeOrigination" />
+          <ScalarProperty Name="origLegCallIdentifier" ColumnName="origLegCallIdentifier" />
+          <ScalarProperty Name="globalCallID_callId" ColumnName="globalCallID_callId" />
+          <ScalarProperty Name="cdrRecordType" ColumnName="cdrRecordType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cmrdatas">
+      <EntityTypeMapping TypeName="NimasEntities.cmrdata">
+        <MappingFragment StoreEntitySet="cmrdata">
+          <ScalarProperty Name="videoTransmissionMetrics_channel2" ColumnName="videoTransmissionMetrics_channel2" />
+          <ScalarProperty Name="videoReceptionMetrics_channel2" ColumnName="videoReceptionMetrics_channel2" />
+          <ScalarProperty Name="videoOneWayDelay_channel2" ColumnName="videoOneWayDelay_channel2" />
+          <ScalarProperty Name="videoRoundTripTime_channel2" ColumnName="videoRoundTripTime_channel2" />
+          <ScalarProperty Name="videoAverageJitter_channel2" ColumnName="videoAverageJitter_channel2" />
+          <ScalarProperty Name="numberVideoPacketsLost_channel2" ColumnName="numberVideoPacketsLost_channel2" />
+          <ScalarProperty Name="numberVideoOctetsReceived_channel2" ColumnName="numberVideoOctetsReceived_channel2" />
+          <ScalarProperty Name="numberVideoPacketsReceived_channel2" ColumnName="numberVideoPacketsReceived_channel2" />
+          <ScalarProperty Name="numberVideoOctetsSent_channel2" ColumnName="numberVideoOctetsSent_channel2" />
+          <ScalarProperty Name="numberVideoPacketsSent_channel2" ColumnName="numberVideoPacketsSent_channel2" />
+          <ScalarProperty Name="videoDuration_channel2" ColumnName="videoDuration_channel2" />
+          <ScalarProperty Name="videoContentType_channel2" ColumnName="videoContentType_channel2" />
+          <ScalarProperty Name="videoTransmissionMetrics" ColumnName="videoTransmissionMetrics" />
+          <ScalarProperty Name="videoReceptionMetrics" ColumnName="videoReceptionMetrics" />
+          <ScalarProperty Name="videoOneWayDelay" ColumnName="videoOneWayDelay" />
+          <ScalarProperty Name="videoRoundTripTime" ColumnName="videoRoundTripTime" />
+          <ScalarProperty Name="videoAverageJitter" ColumnName="videoAverageJitter" />
+          <ScalarProperty Name="numberVideoPacketsLost" ColumnName="numberVideoPacketsLost" />
+          <ScalarProperty Name="numberVideoOctetsReceived" ColumnName="numberVideoOctetsReceived" />
+          <ScalarProperty Name="numberVideoPacketsReceived" ColumnName="numberVideoPacketsReceived" />
+          <ScalarProperty Name="numberVideoOctetsSent" ColumnName="numberVideoOctetsSent" />
+          <ScalarProperty Name="numberVideoPacketsSent" ColumnName="numberVideoPacketsSent" />
+          <ScalarProperty Name="videoDuration" ColumnName="videoDuration" />
+          <ScalarProperty Name="videoContentType" ColumnName="videoContentType" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
+          <ScalarProperty Name="varVQMetrics" ColumnName="varVQMetrics" />
+          <ScalarProperty Name="deviceName" ColumnName="deviceName" />
+          <ScalarProperty Name="globalCallId_ClusterID" ColumnName="globalCallId_ClusterID" />
+          <ScalarProperty Name="directoryNumPartition" ColumnName="directoryNumPartition" />
+          <ScalarProperty Name="pkid" ColumnName="pkid" />
+          <ScalarProperty Name="latency" ColumnName="latency" />
+          <ScalarProperty Name="jitter" ColumnName="jitter" />
+          <ScalarProperty Name="numberPacketsLost" ColumnName="numberPacketsLost" />
+          <ScalarProperty Name="numberOctetsReceived" ColumnName="numberOctetsReceived" />
+          <ScalarProperty Name="numberPacketsReceived" ColumnName="numberPacketsReceived" />
+          <ScalarProperty Name="numberOctetsSent" ColumnName="numberOctetsSent" />
+          <ScalarProperty Name="numberPacketsSent" ColumnName="numberPacketsSent" />
+          <ScalarProperty Name="dateTimeStamp" ColumnName="dateTimeStamp" />
+          <ScalarProperty Name="callIdentifier" ColumnName="callIdentifier" />
+          <ScalarProperty Name="directoryNum" ColumnName="directoryNum" />
+          <ScalarProperty Name="nodeId" ColumnName="nodeId" />
+          <ScalarProperty Name="globalCallID_callId" ColumnName="globalCallID_callId" />
+          <ScalarProperty Name="globalCallID_callManagerId" ColumnName="globalCallID_callManagerId" />
+          <ScalarProperty Name="cdrRecordType" ColumnName="cdrRecordType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeviceRegistrations">
+      <EntityTypeMapping TypeName="NimasEntities.DeviceRegistration">
+        <MappingFragment StoreEntitySet="DeviceRegistration">
+          <ScalarProperty Name="RegDateTime" ColumnName="RegDateTime" />
+          <ScalarProperty Name="DN" ColumnName="DN" />
+          <ScalarProperty Name="Firmware" ColumnName="Firmware" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeviceRegistrationReasons">
+      <EntityTypeMapping TypeName="NimasEntities.DeviceRegistrationReason">
+        <MappingFragment StoreEntitySet="DeviceRegistrationReason">
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="Definition" ColumnName="Definition" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeviceTypes">
+      <EntityTypeMapping TypeName="NimasEntities.DeviceType">
+        <MappingFragment StoreEntitySet="DeviceType">
+          <ScalarProperty Name="DeviceName" ColumnName="DeviceName" />
+          <ScalarProperty Name="DeviceEnum" ColumnName="DeviceEnum" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LinesMonitorings">
+      <EntityTypeMapping TypeName="NimasEntities.LinesMonitoring">
+        <MappingFragment StoreEntitySet="LinesMonitoring">
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="DisconnectionCause" ColumnName="DisconnectionCause" />
+          <ScalarProperty Name="IsUp" ColumnName="IsUp" />
+          <ScalarProperty Name="NB" ColumnName="NB" />
+          <ScalarProperty Name="PortIndex" ColumnName="PortIndex" />
+          <ScalarProperty Name="DialPeer" ColumnName="DialPeer" />
+          <ScalarProperty Name="VGIP" ColumnName="VGIP" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LinesMonitoringCauses">
+      <EntityTypeMapping TypeName="NimasEntities.LinesMonitoringCause">
+        <MappingFragment StoreEntitySet="LinesMonitoringCause">
+          <ScalarProperty Name="CauseDescription" ColumnName="CauseDescription" />
+          <ScalarProperty Name="CategoryDescription" ColumnName="CategoryDescription" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="DisconnectionCause" ColumnName="DisconnectionCause" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LinesMonitoringPorts">
+      <EntityTypeMapping TypeName="NimasEntities.LinesMonitoringPort">
+        <MappingFragment StoreEntitySet="LinesMonitoringPorts">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="LineNumber" ColumnName="LineNumber" />
+          <ScalarProperty Name="PortName" ColumnName="PortName" />
+          <ScalarProperty Name="PortIndex" ColumnName="PortIndex" />
+          <ScalarProperty Name="VGID" ColumnName="VGID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LinesMonitoringVGs">
+      <EntityTypeMapping TypeName="NimasEntities.LinesMonitoringVG">
+        <MappingFragment StoreEntitySet="LinesMonitoringVG">
+          <ScalarProperty Name="VGIP" ColumnName="VGIP" />
+          <ScalarProperty Name="VGName" ColumnName="VGName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="NimasEntities.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetUser">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="AspNetRole">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

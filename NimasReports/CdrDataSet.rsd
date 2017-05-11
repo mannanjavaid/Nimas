@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>Nimas</DataSourceReference>
+      <CommandText>select  callingPartyNumber, finalCalledPartyNumber,duration 
+,dateadd(S, dateTimeOrigination, '1970-01-01') as Date from CdrData
+where SUBSTRING (finalCalledPartyNumber, 1, 1)!='8' and IsNumeric(callingPartyNumber)=1 
+and ISNUMERIC(finalCalledPartyNumber)=1 and duration != 0</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="callingPartyNumber">
+        <DataField>callingPartyNumber</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="finalCalledPartyNumber">
+        <DataField>finalCalledPartyNumber</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="duration">
+        <DataField>duration</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Date">
+        <DataField>Date</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

@@ -1,0 +1,20 @@
+﻿@using ReportViewerForMvc;
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Report</title>
+</head>
+<body>
+    <script src="~/Scripts/jquery-1.10.2.js" type="text/javascript"></script>
+@if (ViewBag.ReportViewer != null)
+{
+    @Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer)
+}
+   
+</body>
+</html>

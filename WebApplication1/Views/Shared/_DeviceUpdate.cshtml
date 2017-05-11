@@ -1,0 +1,119 @@
+﻿@model IEnumerable<WebApplication1.Model.DeviceRegistrationView>
+@foreach (var item in Model)
+{
+    <div class="timeline-items">
+        <div id="@item.Id" class="timeline-item clearfix">
+            @if (item.Status == true)
+            {
+                <div class="timeline-info">
+                    <i class="timeline-indicator ace-icon fa fa-check green bigger-130"></i>
+                </div>
+                <div class="widget-box transparent">
+
+                    <div class="widget-header widget-header-small">
+                        <h5 class="widget-title smaller">
+                            <a href='@Url.Action("PhoneProfile", "Devices", new { PhoneName = item.Name } )' class="blue">@Html.DisplayFor(modelItem => item.Name)</a>
+
+                            @if (item.Status == true)
+                            {
+                                <span class="grey">&emsp; Registered </span>
+                            }
+                            else
+                            {
+                                <span class="grey">&emsp; unRegistered </span>
+                            }
+                        </h5>
+
+                        <span class="widget-toolbar no-border">
+                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                            @Html.DisplayFor(modelItem => item.RegTime)
+                        </span>
+
+                        <span class="widget-toolbar">
+                            <a href="#" data-action="collapse">
+                                <i class="ace-icon fa fa-chevron-up"></i>
+                            </a>
+                        </span>
+                    </div>
+
+                    <div class="widget-body">
+                        <div class="widget-main">
+                            DN: <span class="green">@Html.DisplayFor(modelItem => item.DN)</span>
+                            <div class="space-1"></div>
+                            Type:<span class="green">@Html.DisplayFor(modelItem => item.Type)</span>
+                            <div class="space-1"></div>
+                            IP:<span class="green"> @Html.DisplayFor(modelItem => item.IP)</span>
+                            <div class="space-1"></div>
+                            Description:<span class="green"> @Html.DisplayFor(modelItem => item.Description)</span>
+                            <div class="space-1"></div>
+
+                            <div class="widget-toolbox clearfix">
+                                <div class="pull-left">
+                                    <i class="ace-icon fa fa-hand-o-right grey bigger-125"></i>
+                                    <a href='@Url.Action("PhoneProfile", "Devices", new { PhoneName = item.Name } )' class="bigger-110">Click for more Details &hellip;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            }
+            else
+            {
+                <div class="timeline-info">
+                    <i class="timeline-indicator ace-icon fa fa-times red bigger-130"></i>
+                </div>
+                <div class="widget-box transparent">
+
+                    <div class="widget-header widget-header-small">
+                        <h5 class="widget-title smaller">
+                            <a href='@Url.Action("PhoneProfile", "Devices", new { PhoneName = item.Name } )' class="blue">@Html.DisplayFor(modelItem => item.Name)</a>
+
+                            @if (item.Status == true)
+                            {
+                                <span class="grey">&emsp; Registered </span>
+                            }
+                            else
+                            {
+                                <span class="grey">&emsp; unRegistered </span>
+                            }
+                        </h5>
+
+                        <span class="widget-toolbar no-border">
+                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                            @Html.DisplayFor(modelItem => item.RegTime)
+                        </span>
+
+                        <span class="widget-toolbar">
+                            <a href="#" data-action="collapse">
+                                <i class="ace-icon fa fa-chevron-up"></i>
+                            </a>
+                        </span>
+                    </div>
+
+                    <div class="widget-body">
+                        <div class="widget-main">
+                            Reason:<span class="red"><a href="#" class="red test" data-toggle="tooltip" data-placement="top" title="@Html.DisplayFor(modelItem => item.ReasonDescription)">@Html.DisplayFor(modelItem => item.Reason)</a></span>
+                            <div class="space-1"></div>
+                            Type:<span class="red">@Html.DisplayFor(modelItem => item.Type)</span>
+                            <div class="space-1"></div>
+                            IP:<span class="red"> @Html.DisplayFor(modelItem => item.IP)</span>
+                            <div class="space-1"></div>
+                            Description:<span class="red"> @Html.DisplayFor(modelItem => item.Description)</span>
+                            <div class="space-1"></div>
+
+
+                            <div class="widget-toolbox clearfix">
+                                <div class="pull-left">
+                                    <i class="ace-icon fa fa-hand-o-right grey bigger-125"></i>
+                                    <a href='@Url.Action("PhoneProfile", "Devices", new { PhoneName = item.Name } )' class="bigger-110">Click for more Details &hellip;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div><!-- /.timeline-items -->
+}

@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts{
+
+
+   <script src="~/Scripts/jquery.signalR-2.2.1.js" type="text/javascript"></script>
+<script src="~/signalr/hubs" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+
+            var rows = 0;
+            var monitor = $.connection.auditHub;
+            var win = $(window);
+
+            // Each time the user scrolls
+            // Each time the user scrolls
+            win.scroll(function () {
+                // End of the document reached?
+                if ($(document).height() - win.height() == win.scrollTop()) {
+                    rows = $(".timeline-item").length;
+                    var label = $(".label-lg").last().text().trim();
+                    $.ajax({
+                        url: "GetAuditData",
+                        type: "get",
+                        data: { SkipRows: rows, LastGroup: label },
+                        success: function (response, textStatus, jqXHR) {
+                            if (response != '') {
+                                $(".col-sm-offset-1").append(response);
+
+                            }
+                        }
+                    });
+                }
+            });
+
+
+            monitor.client.initDataUpdate = function () {
+                $.ajax({
+                    url: "GetAuditUpdatedData",
+                    type: "get",
+                    success: function (response, textStatus, jqXHR) {
+                        if (response != '') {
+                            var element = $(".col-sm-offset-1").find(".label-lg").first();
+                            if (element.text().trim() === "Today") {
+                                var element = $(".col-sm-offset-1").find(".timeline-container").first();
+                                var label = element.find(".timeline-label");
+                                label.remove();
+                                element.prepend(response);
+                                element.prepend(label);
+
+                            } else {
+
+                                var lebelString = '<div class="timeline-container"> <div class="timeline-label"><span class="label label-primary arrowed-in-right label-lg"> <b>Today</b></span></div>';
+                                var container = $('<div class="timeline-container"></div>');
+                                container.append('<div class="timeline-label"><span class="label label-primary arrowed-in-right label-lg"> <b>Today</b></span></div>');
+                                container.append(response);
+                                $(".col-sm-offset-1").prepend(container);
+
+                            }
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert("error");
+                    },
+
+                    complete: function () {
+                    }
+                });
+
+            };
+
+            $.connection.hub.start()
+                .done(function () {
+
+                });
+        });
+
+    </script>
+}

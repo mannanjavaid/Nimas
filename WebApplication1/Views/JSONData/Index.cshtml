@@ -1,0 +1,140 @@
+﻿@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="monitoringData"></div>
+
+<style>
+    .portInfo {
+        width: 100px;
+        height: 84px;
+        display: inline-table;
+    }
+
+        .portInfo p {
+            margin: 0;
+        }
+
+    .vgip_title {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+</style>
+
+
+@section scripts{
+    <script src="~/Scripts/jquery.signalR-2.2.1.js" type="text/javascript"></script>
+    <script src="~/signalr/hubs" type="text/javascript"></script>
+    <script type="text/javascript">
+        var oldElementArray = [];
+        var elementArray = [];
+        $(function () {
+            // Proxy created on the fly
+            var monitor = $.connection.liveMonitorHub;
+
+            // Declare a function on the chat hub so the server can invoke it
+            monitor.client.initDataUpdate = function () {
+                monitor.server.getUpdatedData();
+
+            };
+
+            monitor.client.updateLayout = function (data) {
+                var arrayLength = data.length;
+                for (var i = 0; i < arrayLength; i++) {
+                    var object = data[i];
+
+                    $('#monitoringData').append('<div class=VGIP id=' + object.VGIP.split('.').join('') + '><div class=vgip_title>' + object.VGName + ' : ' + object.VGIP + '</div></div>');
+                    var portInfoLength = object.PortInfo.length;
+                    for (var j = 0; j < portInfoLength; j++) {
+                        var info = object.PortInfo[j];
+                        var className = 'port' + info.PortIndex + " " + "btn btn-lg btn-danger";
+                        var div = $('<div class=portInfo></div>');
+                        var button = $('<button>' + info.PortName + '</button>');
+                        button.addClass(className);
+                        div.append(button);
+                        div.append('<p></p> <p></p>');
+                        
+                        $("#" + object.VGIP.split('.').join('')).append(div);
+                    }
+                    $('#monitoringData').append('<span style=clear:both;></span>');
+
+                }
+
+            }
+
+
+            monitor.client.update = function (data) {
+
+                oldElementArray = elementArray;
+                elementArray = [];
+                $('.VGIP button').each(function () {
+                    $(this).removeClass("btn btn-lg btn-success");
+                    $(this).addClass("btn btn-lg btn-danger");
+                    var firstelement = $(this).next();
+                    var secondelement = firstelement.next();
+                    firstelement.text("");
+                    secondelement.text("");
+                });
+
+
+                var arrayLength = data.length;
+                for (var i = 0; i < arrayLength; i++) {
+                    var object = data[i];
+                    var portInfoLength = object.PortInfo.length;
+                    for (var j = 0; j < portInfoLength; j++) {
+
+                        var portInfo = object.PortInfo[j];
+                        var element = $('#'+ object.VGIP.VGIP.split('.').join('') + ' button.port' + portInfo.PortIndex);
+                        element.removeClass("btn btn-lg btn-danger");
+                        element.addClass("btn btn-lg btn-success");
+                        var firstelement = element.next();
+                        var secondelement = firstelement.next();
+                        firstelement.append(portInfo.NB);
+                        elementArray.push(secondelement);
+                        secondelement.append(portInfo.Uptime);
+                    }
+
+                }
+
+            }
+
+            // Start the connection
+            $.connection.hub.start()
+                .done(function () {
+                    monitor.server.getLayoutInfo();
+                    monitor.server.getUpdatedData();
+                });
+
+            setInterval(function () {
+
+
+                for (var i = 0; i < elementArray.length; i++) {
+                    var number = elementArray[i].text();
+                    if (number === "") {
+                        var dateString = getFormatedTime(1);
+                        elementArray[i].text(dateString);
+                    } else {
+                        var parts = number.split(":");
+                        var hours = parseInt(parts[0]);
+                        var minutes = parseInt(parts[1]);
+                        var seconds = parseInt(parts[2]);
+                        var totalSeconds = (hours * 60 * 60) + (minutes * 60) + seconds;
+
+                        var dateString = getFormatedTime(++totalSeconds);
+                        elementArray[i].text(dateString);
+                    }
+                }
+
+            }, 1000);
+
+            function getFormatedTime(seconds) {
+                var date = new Date(null);
+                date.setSeconds(seconds);
+                return date.toISOString().substr(11, 8);
+            }
+
+        });
+
+    </script>
+}

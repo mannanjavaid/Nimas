@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NimasEntities" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityContainer Name="TestDB1Entities2" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+    <EntitySet Name="C__MigrationHistory" EntityType="NimasEntities.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="NimasEntities.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="NimasEntities.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="NimasEntities.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="NimasEntities.AspNetUser" />
+    <EntitySet Name="cdrcmrfiles" EntityType="NimasEntities.cdrcmrfile" />
+    <EntitySet Name="CdrDatas" EntityType="NimasEntities.CdrData" />
+    <EntitySet Name="cmrdatas" EntityType="NimasEntities.cmrdata" />
+    <EntitySet Name="DeviceRegistrations" EntityType="NimasEntities.DeviceRegistration" />
+    <EntitySet Name="DeviceRegistrationReasons" EntityType="NimasEntities.DeviceRegistrationReason" />
+    <EntitySet Name="DeviceTypes" EntityType="NimasEntities.DeviceType" />
+    <EntitySet Name="LinesMonitorings" EntityType="NimasEntities.LinesMonitoring" />
+    <EntitySet Name="LinesMonitoringCauses" EntityType="NimasEntities.LinesMonitoringCause" />
+    <EntitySet Name="LinesMonitoringPorts" EntityType="NimasEntities.LinesMonitoringPort" />
+    <EntitySet Name="LinesMonitoringVGs" EntityType="NimasEntities.LinesMonitoringVG" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="NimasEntities.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="NimasEntities.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="NimasEntities.AspNetUserRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="NimasEntities.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="NimasEntities.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="NimasEntities.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="NimasEntities.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="NimasEntities.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+    <NavigationProperty Name="AspNetRoles" Relationship="NimasEntities.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+  </EntityType>
+  <EntityType Name="cdrcmrfile">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="filename" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="filedate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="CdrData">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cdrRecordType" Type="Int32" />
+    <Property Name="globalCallID_callId" Type="Int32" />
+    <Property Name="origLegCallIdentifier" Type="Int32" />
+    <Property Name="dateTimeOrigination" Type="Int32" />
+    <Property Name="origNodeId" Type="Int32" />
+    <Property Name="callingPartyNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="callingPartyUnicodeLoginUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="origCause_value" Type="Int32" />
+    <Property Name="origMediaTransportAddress_IP" Type="Int32" />
+    <Property Name="finalCalledPartyNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="finalCalledPartyUnicodeLoginUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="destCause_value" Type="Int32" />
+    <Property Name="destMediaTransportAddress_IP" Type="Int32" />
+    <Property Name="dateTimeConnect" Type="Int32" />
+    <Property Name="dateTimeDisconnect" Type="Int32" />
+    <Property Name="lastRedirectDn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="lastRedirectDnPartition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="duration" Type="Int32" />
+    <Property Name="origDeviceName" Type="String" MaxLength="129" FixedLength="false" Unicode="false" />
+    <Property Name="destDeviceName" Type="String" MaxLength="129" FixedLength="false" Unicode="false" />
+    <Property Name="origCallTerminationOnBehalfOf" Type="Int32" />
+    <Property Name="destCallTerminationOnBehalfOf" Type="Int32" />
+    <Property Name="authCodeDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="authorizationCodeValue" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="origIpv4v6Addr" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="destIpv4v6Addr" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="lastRedirectingPartyPattern" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="cmrdata">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cdrRecordType" Type="Int32" />
+    <Property Name="globalCallID_callManagerId" Type="Int32" />
+    <Property Name="globalCallID_callId" Type="Int32" />
+    <Property Name="nodeId" Type="Int32" />
+    <Property Name="directoryNum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="callIdentifier" Type="Int32" />
+    <Property Name="dateTimeStamp" Type="Int32" />
+    <Property Name="numberPacketsSent" Type="Int32" />
+    <Property Name="numberOctetsSent" Type="Int32" />
+    <Property Name="numberPacketsReceived" Type="Int32" />
+    <Property Name="numberOctetsReceived" Type="Int32" />
+    <Property Name="numberPacketsLost" Type="Int32" />
+    <Property Name="jitter" Type="Int32" />
+    <Property Name="latency" Type="Int32" />
+    <Property Name="pkid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="directoryNumPartition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="globalCallId_ClusterID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="deviceName" Type="String" MaxLength="129" FixedLength="false" Unicode="false" />
+    <Property Name="varVQMetrics" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+    <Property Name="duration" Type="Int32" />
+    <Property Name="videoContentType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="videoDuration" Type="Int32" />
+    <Property Name="numberVideoPacketsSent" Type="Int32" />
+    <Property Name="numberVideoOctetsSent" Type="Int32" />
+    <Property Name="numberVideoPacketsReceived" Type="Int32" />
+    <Property Name="numberVideoOctetsReceived" Type="Int32" />
+    <Property Name="numberVideoPacketsLost" Type="Int32" />
+    <Property Name="videoAverageJitter" Type="Int32" />
+    <Property Name="videoRoundTripTime" Type="Int32" />
+    <Property Name="videoOneWayDelay" Type="Int32" />
+    <Property Name="videoReceptionMetrics" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+    <Property Name="videoTransmissionMetrics" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+    <Property Name="videoContentType_channel2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="videoDuration_channel2" Type="Int32" />
+    <Property Name="numberVideoPacketsSent_channel2" Type="Int32" />
+    <Property Name="numberVideoOctetsSent_channel2" Type="Int32" />
+    <Property Name="numberVideoPacketsReceived_channel2" Type="Int32" />
+    <Property Name="numberVideoOctetsReceived_channel2" Type="Int32" />
+    <Property Name="numberVideoPacketsLost_channel2" Type="Int32" />
+    <Property Name="videoAverageJitter_channel2" Type="Int32" />
+    <Property Name="videoRoundTripTime_channel2" Type="Int32" />
+    <Property Name="videoOneWayDelay_channel2" Type="Int32" />
+    <Property Name="videoReceptionMetrics_channel2" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+    <Property Name="videoTransmissionMetrics_channel2" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DeviceRegistration">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Reason" Type="Int16" />
+    <Property Name="Firmware" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DN" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="RegDateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="DeviceRegistrationReason">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Reason" Type="Int32" />
+    <Property Name="Definition" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DeviceType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DeviceEnum" Type="Int32" />
+    <Property Name="DeviceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="LinesMonitoring">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VGIP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DialPeer" Type="Int32" />
+    <Property Name="PortIndex" Type="Int16" />
+    <Property Name="NB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsUp" Type="Boolean" />
+    <Property Name="DisconnectionCause" Type="Int16" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="LinesMonitoringCause">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DisconnectionCause" Type="Int16" Nullable="false" />
+    <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CauseDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="LinesMonitoringPort">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VGID" Type="Int32" Nullable="false" />
+    <Property Name="PortIndex" Type="Int16" Nullable="false" />
+    <Property Name="PortName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LineNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="LinesMonitoringVG">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VGName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VGIP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="NimasEntities.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="NimasEntities.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="NimasEntities.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="NimasEntities.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Type="NimasEntities.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+    <End Type="NimasEntities.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
+</Schema>

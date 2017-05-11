@@ -1,0 +1,21 @@
+﻿
+@model  WebApplication1.Models.DeviceRegistrationUpdateModel
+
+
+@{Html.RenderPartial("_DeviceUpdate", Model.ExistingGroupList);}
+
+@foreach (var group in Model.GroupList)
+{
+    <div class="timeline-container">
+        <div class="timeline-label">
+            <span class="label label-primary arrowed-in-right label-lg">
+
+                <b>@group.FirstOrDefault().RegDate.ToString("dd MMM")</b>
+
+            </span>
+        </div>
+
+        @{Html.RenderPartial("_DeviceUpdate", group);}
+
+    </div><!-- /.timeline-container -->
+            }

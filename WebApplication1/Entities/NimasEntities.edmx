@@ -1,0 +1,883 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NimasEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cdrcmrfiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="filename" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="filedate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CdrData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cdrRecordType" Type="int" />
+          <Property Name="globalCallID_callId" Type="int" />
+          <Property Name="origLegCallIdentifier" Type="int" />
+          <Property Name="dateTimeOrigination" Type="int" />
+          <Property Name="origNodeId" Type="int" />
+          <Property Name="callingPartyNumber" Type="varchar" MaxLength="50" />
+          <Property Name="callingPartyUnicodeLoginUserID" Type="varchar" MaxLength="128" />
+          <Property Name="origCause_value" Type="int" />
+          <Property Name="origMediaTransportAddress_IP" Type="int" />
+          <Property Name="finalCalledPartyNumber" Type="varchar" MaxLength="50" />
+          <Property Name="finalCalledPartyUnicodeLoginUserID" Type="varchar" MaxLength="128" />
+          <Property Name="destCause_value" Type="int" />
+          <Property Name="destMediaTransportAddress_IP" Type="int" />
+          <Property Name="dateTimeConnect" Type="int" />
+          <Property Name="dateTimeDisconnect" Type="int" />
+          <Property Name="lastRedirectDn" Type="varchar" MaxLength="50" />
+          <Property Name="lastRedirectDnPartition" Type="varchar" MaxLength="50" />
+          <Property Name="duration" Type="int" />
+          <Property Name="origDeviceName" Type="varchar" MaxLength="129" />
+          <Property Name="destDeviceName" Type="varchar" MaxLength="129" />
+          <Property Name="origCallTerminationOnBehalfOf" Type="int" />
+          <Property Name="destCallTerminationOnBehalfOf" Type="int" />
+          <Property Name="authCodeDescription" Type="varchar" MaxLength="50" />
+          <Property Name="authorizationCodeValue" Type="varchar" MaxLength="32" />
+          <Property Name="origIpv4v6Addr" Type="varchar" MaxLength="64" />
+          <Property Name="destIpv4v6Addr" Type="varchar" MaxLength="64" />
+          <Property Name="lastRedirectingPartyPattern" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="cmrdata">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cdrRecordType" Type="int" />
+          <Property Name="globalCallID_callManagerId" Type="int" />
+          <Property Name="globalCallID_callId" Type="int" />
+          <Property Name="nodeId" Type="int" />
+          <Property Name="directoryNum" Type="varchar" MaxLength="50" />
+          <Property Name="callIdentifier" Type="int" />
+          <Property Name="dateTimeStamp" Type="int" />
+          <Property Name="numberPacketsSent" Type="int" />
+          <Property Name="numberOctetsSent" Type="int" />
+          <Property Name="numberPacketsReceived" Type="int" />
+          <Property Name="numberOctetsReceived" Type="int" />
+          <Property Name="numberPacketsLost" Type="int" />
+          <Property Name="jitter" Type="int" />
+          <Property Name="latency" Type="int" />
+          <Property Name="pkid" Type="varchar" MaxLength="50" />
+          <Property Name="directoryNumPartition" Type="varchar" MaxLength="50" />
+          <Property Name="globalCallId_ClusterID" Type="varchar" MaxLength="50" />
+          <Property Name="deviceName" Type="varchar" MaxLength="129" />
+          <Property Name="varVQMetrics" Type="varchar" MaxLength="600" />
+          <Property Name="duration" Type="int" />
+          <Property Name="videoContentType" Type="varchar" MaxLength="10" />
+          <Property Name="videoDuration" Type="int" />
+          <Property Name="numberVideoPacketsSent" Type="int" />
+          <Property Name="numberVideoOctetsSent" Type="int" />
+          <Property Name="numberVideoPacketsReceived" Type="int" />
+          <Property Name="numberVideoOctetsReceived" Type="int" />
+          <Property Name="numberVideoPacketsLost" Type="int" />
+          <Property Name="videoAverageJitter" Type="int" />
+          <Property Name="videoRoundTripTime" Type="int" />
+          <Property Name="videoOneWayDelay" Type="int" />
+          <Property Name="videoReceptionMetrics" Type="varchar" MaxLength="600" />
+          <Property Name="videoTransmissionMetrics" Type="varchar" MaxLength="600" />
+          <Property Name="videoContentType_channel2" Type="varchar" MaxLength="10" />
+          <Property Name="videoDuration_channel2" Type="int" />
+          <Property Name="numberVideoPacketsSent_channel2" Type="int" />
+          <Property Name="numberVideoOctetsSent_channel2" Type="int" />
+          <Property Name="numberVideoPacketsReceived_channel2" Type="int" />
+          <Property Name="numberVideoOctetsReceived_channel2" Type="int" />
+          <Property Name="numberVideoPacketsLost_channel2" Type="int" />
+          <Property Name="videoAverageJitter_channel2" Type="int" />
+          <Property Name="videoRoundTripTime_channel2" Type="int" />
+          <Property Name="videoOneWayDelay_channel2" Type="int" />
+          <Property Name="videoReceptionMetrics_channel2" Type="varchar" MaxLength="600" />
+          <Property Name="videoTransmissionMetrics_channel2" Type="varchar" MaxLength="600" />
+        </EntityType>
+        <EntityType Name="DeviceRegistration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="IP" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Description" Type="nchar" MaxLength="50" />
+          <Property Name="Reason" Type="smallint" />
+          <Property Name="Firmware" Type="nvarchar" MaxLength="50" />
+          <Property Name="DN" Type="nchar" MaxLength="10" />
+          <Property Name="RegDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeviceRegistrationReason">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Reason" Type="int" />
+          <Property Name="Definition" Type="text" />
+          <Property Name="Details" Type="text" />
+        </EntityType>
+        <EntityType Name="DeviceType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeviceEnum" Type="int" />
+          <Property Name="DeviceName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LinesMonitoring">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VGIP" Type="nvarchar" MaxLength="50" />
+          <Property Name="DialPeer" Type="int" />
+          <Property Name="PortIndex" Type="smallint" />
+          <Property Name="NB" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsUp" Type="bit" />
+          <Property Name="DisconnectionCause" Type="smallint" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="LinesMonitoringCause">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DisconnectionCause" Type="smallint" Nullable="false" />
+          <Property Name="Category" Type="nvarchar(max)" />
+          <Property Name="CategoryDescription" Type="nvarchar(max)" />
+          <Property Name="CauseDescription" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LinesMonitoringPorts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VGID" Type="int" Nullable="false" />
+          <Property Name="PortIndex" Type="smallint" Nullable="false" />
+          <Property Name="PortName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LineNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="LinesMonitoringVG">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VGName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VGIP" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NimasEntitiesStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cdrcmrfiles" EntityType="Self.cdrcmrfiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CdrData" EntityType="Self.CdrData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cmrdata" EntityType="Self.cmrdata" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeviceRegistration" EntityType="Self.DeviceRegistration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeviceRegistrationReason" EntityType="Self.DeviceRegistrationReason" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeviceType" EntityType="Self.DeviceType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LinesMonitoring" EntityType="Self.LinesMonitoring" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LinesMonitoringCause" EntityType="Self.LinesMonitoringCause" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LinesMonitoringPorts" EntityType="Self.LinesMonitoringPorts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LinesMonitoringVG" EntityType="Self.LinesMonitoringVG" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NimasEntities" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="TestDB1Entities2" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+          <EntitySet Name="C__MigrationHistory" EntityType="NimasEntities.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="NimasEntities.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="NimasEntities.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="NimasEntities.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="NimasEntities.AspNetUser" />
+          <EntitySet Name="cdrcmrfiles" EntityType="NimasEntities.cdrcmrfile" />
+          <EntitySet Name="CdrDatas" EntityType="NimasEntities.CdrData" />
+          <EntitySet Name="cmrdatas" EntityType="NimasEntities.cmrdata" />
+          <EntitySet Name="DeviceRegistrations" EntityType="NimasEntities.DeviceRegistration" />
+          <EntitySet Name="DeviceRegistrationReasons" EntityType="NimasEntities.DeviceRegistrationReason" />
+          <EntitySet Name="DeviceTypes" EntityType="NimasEntities.DeviceType" />
+          <EntitySet Name="LinesMonitorings" EntityType="NimasEntities.LinesMonitoring" />
+          <EntitySet Name="LinesMonitoringCauses" EntityType="NimasEntities.LinesMonitoringCause" />
+          <EntitySet Name="LinesMonitoringPorts" EntityType="NimasEntities.LinesMonitoringPort" />
+          <EntitySet Name="LinesMonitoringVGs" EntityType="NimasEntities.LinesMonitoringVG" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="NimasEntities.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="NimasEntities.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="NimasEntities.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="NimasEntities.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="NimasEntities.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="NimasEntities.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="NimasEntities.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="NimasEntities.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="AspNetRoles" Relationship="NimasEntities.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+        </EntityType>
+        <EntityType Name="cdrcmrfile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="filename" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="filedate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CdrData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cdrRecordType" Type="Int32" />
+          <Property Name="globalCallID_callId" Type="Int32" />
+          <Property Name="origLegCallIdentifier" Type="Int32" />
+          <Property Name="dateTimeOrigination" Type="Int32" />
+          <Property Name="origNodeId" Type="Int32" />
+          <Property Name="callingPartyNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="callingPartyUnicodeLoginUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="origCause_value" Type="Int32" />
+          <Property Name="origMediaTransportAddress_IP" Type="Int32" />
+          <Property Name="finalCalledPartyNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="finalCalledPartyUnicodeLoginUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="destCause_value" Type="Int32" />
+          <Property Name="destMediaTransportAddress_IP" Type="Int32" />
+          <Property Name="dateTimeConnect" Type="Int32" />
+          <Property Name="dateTimeDisconnect" Type="Int32" />
+          <Property Name="lastRedirectDn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastRedirectDnPartition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="duration" Type="Int32" />
+          <Property Name="origDeviceName" Type="String" MaxLength="129" FixedLength="false" Unicode="false" />
+          <Property Name="destDeviceName" Type="String" MaxLength="129" FixedLength="false" Unicode="false" />
+          <Property Name="origCallTerminationOnBehalfOf" Type="Int32" />
+          <Property Name="destCallTerminationOnBehalfOf" Type="Int32" />
+          <Property Name="authCodeDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="authorizationCodeValue" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="origIpv4v6Addr" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="destIpv4v6Addr" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="lastRedirectingPartyPattern" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="cmrdata">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cdrRecordType" Type="Int32" />
+          <Property Name="globalCallID_callManagerId" Type="Int32" />
+          <Property Name="globalCallID_callId" Type="Int32" />
+          <Property Name="nodeId" Type="Int32" />
+          <Property Name="directoryNum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="callIdentifier" Type="Int32" />
+          <Property Name="dateTimeStamp" Type="Int32" />
+          <Property Name="numberPacketsSent" Type="Int32" />
+          <Property Name="numberOctetsSent" Type="Int32" />
+          <Property Name="numberPacketsReceived" Type="Int32" />
+          <Property Name="numberOctetsReceived" Type="Int32" />
+          <Property Name="numberPacketsLost" Type="Int32" />
+          <Property Name="jitter" Type="Int32" />
+          <Property Name="latency" Type="Int32" />
+          <Property Name="pkid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="directoryNumPartition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="globalCallId_ClusterID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="deviceName" Type="String" MaxLength="129" FixedLength="false" Unicode="false" />
+          <Property Name="varVQMetrics" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+          <Property Name="duration" Type="Int32" />
+          <Property Name="videoContentType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="videoDuration" Type="Int32" />
+          <Property Name="numberVideoPacketsSent" Type="Int32" />
+          <Property Name="numberVideoOctetsSent" Type="Int32" />
+          <Property Name="numberVideoPacketsReceived" Type="Int32" />
+          <Property Name="numberVideoOctetsReceived" Type="Int32" />
+          <Property Name="numberVideoPacketsLost" Type="Int32" />
+          <Property Name="videoAverageJitter" Type="Int32" />
+          <Property Name="videoRoundTripTime" Type="Int32" />
+          <Property Name="videoOneWayDelay" Type="Int32" />
+          <Property Name="videoReceptionMetrics" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+          <Property Name="videoTransmissionMetrics" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+          <Property Name="videoContentType_channel2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="videoDuration_channel2" Type="Int32" />
+          <Property Name="numberVideoPacketsSent_channel2" Type="Int32" />
+          <Property Name="numberVideoOctetsSent_channel2" Type="Int32" />
+          <Property Name="numberVideoPacketsReceived_channel2" Type="Int32" />
+          <Property Name="numberVideoOctetsReceived_channel2" Type="Int32" />
+          <Property Name="numberVideoPacketsLost_channel2" Type="Int32" />
+          <Property Name="videoAverageJitter_channel2" Type="Int32" />
+          <Property Name="videoRoundTripTime_channel2" Type="Int32" />
+          <Property Name="videoOneWayDelay_channel2" Type="Int32" />
+          <Property Name="videoReceptionMetrics_channel2" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+          <Property Name="videoTransmissionMetrics_channel2" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DeviceRegistration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Reason" Type="Int16" />
+          <Property Name="Firmware" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DN" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="RegDateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="DeviceRegistrationReason">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Reason" Type="Int32" />
+          <Property Name="Definition" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DeviceType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeviceEnum" Type="Int32" />
+          <Property Name="DeviceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LinesMonitoring">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VGIP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DialPeer" Type="Int32" />
+          <Property Name="PortIndex" Type="Int16" />
+          <Property Name="NB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsUp" Type="Boolean" />
+          <Property Name="DisconnectionCause" Type="Int16" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="LinesMonitoringCause">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DisconnectionCause" Type="Int16" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CauseDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LinesMonitoringPort">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VGID" Type="Int32" Nullable="false" />
+          <Property Name="PortIndex" Type="Int16" Nullable="false" />
+          <Property Name="PortName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LineNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="LinesMonitoringVG">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VGName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VGIP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="NimasEntities.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NimasEntities.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="NimasEntities.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NimasEntities.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="NimasEntities.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="NimasEntities.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NimasEntitiesStoreContainer" CdmEntityContainer="TestDB1Entities2">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="NimasEntities.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="NimasEntities.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="NimasEntities.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="NimasEntities.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="NimasEntities.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cdrcmrfiles">
+            <EntityTypeMapping TypeName="NimasEntities.cdrcmrfile">
+              <MappingFragment StoreEntitySet="cdrcmrfiles">
+                <ScalarProperty Name="filedate" ColumnName="filedate" />
+                <ScalarProperty Name="filename" ColumnName="filename" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CdrDatas">
+            <EntityTypeMapping TypeName="NimasEntities.CdrData">
+              <MappingFragment StoreEntitySet="CdrData">
+                <ScalarProperty Name="lastRedirectingPartyPattern" ColumnName="lastRedirectingPartyPattern" />
+                <ScalarProperty Name="destIpv4v6Addr" ColumnName="destIpv4v6Addr" />
+                <ScalarProperty Name="origIpv4v6Addr" ColumnName="origIpv4v6Addr" />
+                <ScalarProperty Name="authorizationCodeValue" ColumnName="authorizationCodeValue" />
+                <ScalarProperty Name="authCodeDescription" ColumnName="authCodeDescription" />
+                <ScalarProperty Name="destCallTerminationOnBehalfOf" ColumnName="destCallTerminationOnBehalfOf" />
+                <ScalarProperty Name="origCallTerminationOnBehalfOf" ColumnName="origCallTerminationOnBehalfOf" />
+                <ScalarProperty Name="destDeviceName" ColumnName="destDeviceName" />
+                <ScalarProperty Name="origDeviceName" ColumnName="origDeviceName" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="lastRedirectDnPartition" ColumnName="lastRedirectDnPartition" />
+                <ScalarProperty Name="lastRedirectDn" ColumnName="lastRedirectDn" />
+                <ScalarProperty Name="dateTimeDisconnect" ColumnName="dateTimeDisconnect" />
+                <ScalarProperty Name="dateTimeConnect" ColumnName="dateTimeConnect" />
+                <ScalarProperty Name="destMediaTransportAddress_IP" ColumnName="destMediaTransportAddress_IP" />
+                <ScalarProperty Name="destCause_value" ColumnName="destCause_value" />
+                <ScalarProperty Name="finalCalledPartyUnicodeLoginUserID" ColumnName="finalCalledPartyUnicodeLoginUserID" />
+                <ScalarProperty Name="finalCalledPartyNumber" ColumnName="finalCalledPartyNumber" />
+                <ScalarProperty Name="origMediaTransportAddress_IP" ColumnName="origMediaTransportAddress_IP" />
+                <ScalarProperty Name="origCause_value" ColumnName="origCause_value" />
+                <ScalarProperty Name="callingPartyUnicodeLoginUserID" ColumnName="callingPartyUnicodeLoginUserID" />
+                <ScalarProperty Name="callingPartyNumber" ColumnName="callingPartyNumber" />
+                <ScalarProperty Name="origNodeId" ColumnName="origNodeId" />
+                <ScalarProperty Name="dateTimeOrigination" ColumnName="dateTimeOrigination" />
+                <ScalarProperty Name="origLegCallIdentifier" ColumnName="origLegCallIdentifier" />
+                <ScalarProperty Name="globalCallID_callId" ColumnName="globalCallID_callId" />
+                <ScalarProperty Name="cdrRecordType" ColumnName="cdrRecordType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cmrdatas">
+            <EntityTypeMapping TypeName="NimasEntities.cmrdata">
+              <MappingFragment StoreEntitySet="cmrdata">
+                <ScalarProperty Name="videoTransmissionMetrics_channel2" ColumnName="videoTransmissionMetrics_channel2" />
+                <ScalarProperty Name="videoReceptionMetrics_channel2" ColumnName="videoReceptionMetrics_channel2" />
+                <ScalarProperty Name="videoOneWayDelay_channel2" ColumnName="videoOneWayDelay_channel2" />
+                <ScalarProperty Name="videoRoundTripTime_channel2" ColumnName="videoRoundTripTime_channel2" />
+                <ScalarProperty Name="videoAverageJitter_channel2" ColumnName="videoAverageJitter_channel2" />
+                <ScalarProperty Name="numberVideoPacketsLost_channel2" ColumnName="numberVideoPacketsLost_channel2" />
+                <ScalarProperty Name="numberVideoOctetsReceived_channel2" ColumnName="numberVideoOctetsReceived_channel2" />
+                <ScalarProperty Name="numberVideoPacketsReceived_channel2" ColumnName="numberVideoPacketsReceived_channel2" />
+                <ScalarProperty Name="numberVideoOctetsSent_channel2" ColumnName="numberVideoOctetsSent_channel2" />
+                <ScalarProperty Name="numberVideoPacketsSent_channel2" ColumnName="numberVideoPacketsSent_channel2" />
+                <ScalarProperty Name="videoDuration_channel2" ColumnName="videoDuration_channel2" />
+                <ScalarProperty Name="videoContentType_channel2" ColumnName="videoContentType_channel2" />
+                <ScalarProperty Name="videoTransmissionMetrics" ColumnName="videoTransmissionMetrics" />
+                <ScalarProperty Name="videoReceptionMetrics" ColumnName="videoReceptionMetrics" />
+                <ScalarProperty Name="videoOneWayDelay" ColumnName="videoOneWayDelay" />
+                <ScalarProperty Name="videoRoundTripTime" ColumnName="videoRoundTripTime" />
+                <ScalarProperty Name="videoAverageJitter" ColumnName="videoAverageJitter" />
+                <ScalarProperty Name="numberVideoPacketsLost" ColumnName="numberVideoPacketsLost" />
+                <ScalarProperty Name="numberVideoOctetsReceived" ColumnName="numberVideoOctetsReceived" />
+                <ScalarProperty Name="numberVideoPacketsReceived" ColumnName="numberVideoPacketsReceived" />
+                <ScalarProperty Name="numberVideoOctetsSent" ColumnName="numberVideoOctetsSent" />
+                <ScalarProperty Name="numberVideoPacketsSent" ColumnName="numberVideoPacketsSent" />
+                <ScalarProperty Name="videoDuration" ColumnName="videoDuration" />
+                <ScalarProperty Name="videoContentType" ColumnName="videoContentType" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="varVQMetrics" ColumnName="varVQMetrics" />
+                <ScalarProperty Name="deviceName" ColumnName="deviceName" />
+                <ScalarProperty Name="globalCallId_ClusterID" ColumnName="globalCallId_ClusterID" />
+                <ScalarProperty Name="directoryNumPartition" ColumnName="directoryNumPartition" />
+                <ScalarProperty Name="pkid" ColumnName="pkid" />
+                <ScalarProperty Name="latency" ColumnName="latency" />
+                <ScalarProperty Name="jitter" ColumnName="jitter" />
+                <ScalarProperty Name="numberPacketsLost" ColumnName="numberPacketsLost" />
+                <ScalarProperty Name="numberOctetsReceived" ColumnName="numberOctetsReceived" />
+                <ScalarProperty Name="numberPacketsReceived" ColumnName="numberPacketsReceived" />
+                <ScalarProperty Name="numberOctetsSent" ColumnName="numberOctetsSent" />
+                <ScalarProperty Name="numberPacketsSent" ColumnName="numberPacketsSent" />
+                <ScalarProperty Name="dateTimeStamp" ColumnName="dateTimeStamp" />
+                <ScalarProperty Name="callIdentifier" ColumnName="callIdentifier" />
+                <ScalarProperty Name="directoryNum" ColumnName="directoryNum" />
+                <ScalarProperty Name="nodeId" ColumnName="nodeId" />
+                <ScalarProperty Name="globalCallID_callId" ColumnName="globalCallID_callId" />
+                <ScalarProperty Name="globalCallID_callManagerId" ColumnName="globalCallID_callManagerId" />
+                <ScalarProperty Name="cdrRecordType" ColumnName="cdrRecordType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeviceRegistrations">
+            <EntityTypeMapping TypeName="NimasEntities.DeviceRegistration">
+              <MappingFragment StoreEntitySet="DeviceRegistration">
+                <ScalarProperty Name="RegDateTime" ColumnName="RegDateTime" />
+                <ScalarProperty Name="DN" ColumnName="DN" />
+                <ScalarProperty Name="Firmware" ColumnName="Firmware" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeviceRegistrationReasons">
+            <EntityTypeMapping TypeName="NimasEntities.DeviceRegistrationReason">
+              <MappingFragment StoreEntitySet="DeviceRegistrationReason">
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="Definition" ColumnName="Definition" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeviceTypes">
+            <EntityTypeMapping TypeName="NimasEntities.DeviceType">
+              <MappingFragment StoreEntitySet="DeviceType">
+                <ScalarProperty Name="DeviceName" ColumnName="DeviceName" />
+                <ScalarProperty Name="DeviceEnum" ColumnName="DeviceEnum" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LinesMonitorings">
+            <EntityTypeMapping TypeName="NimasEntities.LinesMonitoring">
+              <MappingFragment StoreEntitySet="LinesMonitoring">
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="DisconnectionCause" ColumnName="DisconnectionCause" />
+                <ScalarProperty Name="IsUp" ColumnName="IsUp" />
+                <ScalarProperty Name="NB" ColumnName="NB" />
+                <ScalarProperty Name="PortIndex" ColumnName="PortIndex" />
+                <ScalarProperty Name="DialPeer" ColumnName="DialPeer" />
+                <ScalarProperty Name="VGIP" ColumnName="VGIP" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LinesMonitoringCauses">
+            <EntityTypeMapping TypeName="NimasEntities.LinesMonitoringCause">
+              <MappingFragment StoreEntitySet="LinesMonitoringCause">
+                <ScalarProperty Name="CauseDescription" ColumnName="CauseDescription" />
+                <ScalarProperty Name="CategoryDescription" ColumnName="CategoryDescription" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="DisconnectionCause" ColumnName="DisconnectionCause" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LinesMonitoringPorts">
+            <EntityTypeMapping TypeName="NimasEntities.LinesMonitoringPort">
+              <MappingFragment StoreEntitySet="LinesMonitoringPorts">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LineNumber" ColumnName="LineNumber" />
+                <ScalarProperty Name="PortName" ColumnName="PortName" />
+                <ScalarProperty Name="PortIndex" ColumnName="PortIndex" />
+                <ScalarProperty Name="VGID" ColumnName="VGID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LinesMonitoringVGs">
+            <EntityTypeMapping TypeName="NimasEntities.LinesMonitoringVG">
+              <MappingFragment StoreEntitySet="LinesMonitoringVG">
+                <ScalarProperty Name="VGIP" ColumnName="VGIP" />
+                <ScalarProperty Name="VGName" ColumnName="VGName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="NimasEntities.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer>
+    <edmx:Connection>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <edmx:DesignerProperty Name="EnablePluralization" Value="true" />
+        <edmx:DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <edmx:DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <edmx:DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams />
+  </edmx:Designer>
+</edmx:Edmx>
